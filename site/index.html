@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>이민서 • Personal Site</title>
+    <meta name="description" content="이민서의 포트폴리오와 경력, 프로젝트, 연락처 정보." />
+    <link rel="preload" as="style" href="./styles.css" />
+    <link rel="stylesheet" href="./styles.css" />
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect rx='12' width='64' height='64' fill='%232563eb'/><text x='50%' y='54%' text-anchor='middle' font-family='Arial' font-weight='700' font-size='34' fill='white'>M</text></svg>">
+  </head>
+  <body>
+    <header>
+      <div class="container nav">
+        <a class="brand" href="./">
+          <div class="logo" aria-hidden="true"></div>
+          <span class="brand-name">Minseo Lee</span>
+        </a>
+        <nav class="nav-links" aria-label="Primary">
+          <a class="active" href="./">Home</a>
+          <a href="./about.html">About</a>
+          <a href="./contact.html">Contact</a>
+          <a href="./docs/">Docs</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="container hero">
+      <div class="hero-grid">
+        <section class="hero-card">
+          <h1 class="headline">안녕하세요, 이민서입니다.<br/>사용자 중심의 제품을 만드는 엔지니어</h1>
+          <p class="subheadline">서비스를 설계하고, 데이터를 분석하며, 문제를 해결합니다. 이 페이지는 제 소개와 프로젝트, 커리어를 한 곳에서 보여줍니다.</p>
+          <div class="cta-row">
+            <a class="btn primary" href="./about.html">프로필 보기</a>
+            <a class="btn" href="./contact.html">연락하기</a>
+            <a class="btn" href="./docs/">문서 보기</a>
+          </div>
+        </section>
+        <aside class="hero-card">
+          <h2 style="margin-top:0">핵심 역량</h2>
+          <ul style="margin:0; padding-left:18px">
+            <li>웹 아키텍처 및 성능 최적화</li>
+            <li>데이터 파이프라인 및 분석</li>
+            <li>클라우드 & 컨테이너 (Docker, Nginx)</li>
+          </ul>
+        </aside>
+      </div>
+
+      <section class="cards" aria-label="Highlights">
+        <article class="card">
+          <h3>프로젝트</h3>
+          <p>선정된 프로젝트들을 간결하게 소개합니다. 상세 내역은 About에서 확인하세요.</p>
+        </article>
+        <article class="card">
+          <h3>경력</h3>
+          <p>문제 해결 중심의 경험을 강조합니다. 임팩트와 성과를 숫자로 표현합니다.</p>
+        </article>
+        <article class="card">
+          <h3>블로그/문서</h3>
+          <p>학습과 정리를 위한 공간. 기술 메모와 회고를 공유합니다.</p>
+        </article>
+      </section>
+    </main>
+
+    <footer>
+      <div class="container">
+        © <span id="year"></span> Minseo Lee. All rights reserved.
+      </div>
+    </footer>
+
+    <script src="./main.js" defer></script>
+  </body>
+  </html>
+
+
