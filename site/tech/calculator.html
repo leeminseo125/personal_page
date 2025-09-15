@@ -82,7 +82,15 @@
         let current = '0';
         let stored = null;
         let op = null;
-        const update = () => { display.textContent = current; };
+        const symbol = (o) => ({'/':'÷','*':'×','-':'−','+':'+'}[o] || o);
+        const fmt = (n) => (Number.isFinite(+n) ? String(n) : 'Error');
+        const expressionText = () => {
+          const left = stored !== null ? String(stored) : '';
+          const operator = op ? ' ' + symbol(op) + ' ' : '';
+          const right = current;
+          return (left || operator) ? (left + operator + right) : right;
+        };
+        const update = () => { display.textContent = expressionText(); };
         const inputDigit = (d) => {
           if (current === '0') current = d; else current += d;
           update();
@@ -93,6 +101,7 @@
           stored = parseFloat(current);
           current = '0';
           op = nextOp;
+          update();
         };
         const clearAll = () => { current = '0'; stored = null; op = null; update(); };
         const toggleSign = () => { if (current !== '0') { current = String(-parseFloat(current)); update(); } };
@@ -102,7 +111,7 @@
             const a = stored; const b = parseFloat(current);
             let res = 0;
             switch(op){ case '+': res = a + b; break; case '-': res = a - b; break; case '*': res = a * b; break; case '/': res = b === 0 ? NaN : a / b; break; }
-            current = Number.isFinite(res) ? String(res) : 'Error';
+            current = fmt(res);
             stored = null; op = null; update();
           }
         };
