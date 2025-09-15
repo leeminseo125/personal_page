@@ -9,7 +9,9 @@
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect rx='12' width='64' height='64' fill='%232563eb'/><text x='50%' y='54%' text-anchor='middle' font-family='Arial' font-weight='700' font-size='34' fill='white'>M</text></svg>">
     <style>
       .calc { max-width: 360px; margin: 36px auto; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); box-shadow: var(--shadow); }
-      .calc .display { padding: 18px; border-bottom: 1px solid var(--border); font-size: 28px; text-align: right; color: var(--text); min-height: 56px; }
+      .calc .display { padding: 18px; border-bottom: 1px solid var(--border); text-align: right; color: var(--text); }
+      .calc .expr { font-size: 14px; color: var(--muted); min-height: 20px; }
+      .calc .result { font-size: 34px; line-height: 1.2; min-height: 42px; }
       .calc .row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; padding: 12px; }
       .calc button { padding: 14px 0; border-radius: 10px; border: 1px solid var(--border); background: #111315; color: var(--text); font-size: 16px; }
       .calc button.primary { background: var(--brand); color: var(--brand-contrast); border-color: var(--brand); }
@@ -38,7 +40,10 @@
       <article class="prose" aria-label="Calculator">
         <h1>Calculator</h1>
         <div class="calc" role="application" aria-label="계산기">
-          <div id="display" class="display" aria-live="polite">0</div>
+          <div class="display">
+            <div id="expr" class="expr">&nbsp;</div>
+            <div id="result" class="result">0</div>
+          </div>
           <div class="row">
             <button data-action="clear">AC</button>
             <button data-action="sign">±</button>
@@ -78,41 +83,53 @@
 
     <script>
       (function(){
-        const display = document.getElementById('display');
+        const exprEl = document.getElementById('expr');
+        const resultEl = document.getElementById('result');
         let current = '0';
         let stored = null;
         let op = null;
+        let lastEquals = false;
         const symbol = (o) => ({'/':'÷','*':'×','-':'−','+':'+'}[o] || o);
         const fmt = (n) => (Number.isFinite(+n) ? String(n) : 'Error');
-        const expressionText = () => {
+        const expressionText = (showRight=true) => {
           const left = stored !== null ? String(stored) : '';
           const operator = op ? ' ' + symbol(op) + ' ' : '';
-          const right = current;
-          return (left || operator) ? (left + operator + right) : right;
+          const right = showRight ? current : '';
+          return (left || operator) ? (left + operator + right) : right || '0';
         };
-        const update = () => { display.textContent = expressionText(); };
+        const update = () => {
+          exprEl.textContent = lastEquals ? exprEl.textContent : expressionText(false);
+          resultEl.textContent = current;
+        };
         const inputDigit = (d) => {
+          if (lastEquals) { stored = null; op = null; current = '0'; lastEquals = false; }
           if (current === '0') current = d; else current += d;
-          update();
+          exprEl.textContent = expressionText();
+          resultEl.textContent = current;
         };
-        const inputDot = () => { if (!current.includes('.')) { current += '.'; update(); } };
+        const inputDot = () => { if (!current.includes('.')) { current += '.'; exprEl.textContent = expressionText(); resultEl.textContent = current; } };
         const setOp = (nextOp) => {
-          if (op && stored !== null) equals();
+          if (op && stored !== null && !lastEquals) equals(false);
           stored = parseFloat(current);
           current = '0';
           op = nextOp;
-          update();
+          lastEquals = false;
+          exprEl.textContent = expressionText(false);
+          resultEl.textContent = '0';
         };
-        const clearAll = () => { current = '0'; stored = null; op = null; update(); };
-        const toggleSign = () => { if (current !== '0') { current = String(-parseFloat(current)); update(); } };
-        const percent = () => { current = String(parseFloat(current) / 100); update(); };
-        const equals = () => {
+        const clearAll = () => { current = '0'; stored = null; op = null; lastEquals = false; exprEl.textContent = '\u00A0'; resultEl.textContent = '0'; };
+        const toggleSign = () => { if (current !== '0') { current = String(-parseFloat(current)); resultEl.textContent = current; exprEl.textContent = expressionText(); } };
+        const percent = () => { current = String(parseFloat(current) / 100); resultEl.textContent = current; exprEl.textContent = expressionText(); };
+        const equals = (mark=true) => {
           if (op && stored !== null) {
             const a = stored; const b = parseFloat(current);
             let res = 0;
             switch(op){ case '+': res = a + b; break; case '-': res = a - b; break; case '*': res = a * b; break; case '/': res = b === 0 ? NaN : a / b; break; }
-            current = fmt(res);
-            stored = null; op = null; update();
+            const result = fmt(res);
+            if (mark) exprEl.textContent = expressionText(true) + ' =';
+            current = result;
+            stored = null; op = null; lastEquals = true;
+            resultEl.textContent = current;
           }
         };
         document.addEventListener('click', (e) => {
@@ -136,7 +153,6 @@
           if (k === 'Enter' || k === '=') return equals();
           if (k === 'Escape') return clearAll();
         });
-        update();
       })();
     </script>
   </body>
