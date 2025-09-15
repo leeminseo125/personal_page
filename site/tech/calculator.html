@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Calculator • Minseo Lee</title>
+    <meta name="description" content="간단한 계산기 도구 (사칙연산)." />
+    <link rel="stylesheet" href="../styles.css" />
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect rx='12' width='64' height='64' fill='%232563eb'/><text x='50%' y='54%' text-anchor='middle' font-family='Arial' font-weight='700' font-size='34' fill='white'>M</text></svg>">
+    <style>
+      .calc { max-width: 360px; margin: 36px auto; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); box-shadow: var(--shadow); }
+      .calc .display { padding: 18px; border-bottom: 1px solid var(--border); font-size: 28px; text-align: right; color: var(--text); min-height: 56px; }
+      .calc .row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; padding: 12px; }
+      .calc button { padding: 14px 0; border-radius: 10px; border: 1px solid var(--border); background: #111315; color: var(--text); font-size: 16px; }
+      .calc button.primary { background: var(--brand); color: var(--brand-contrast); border-color: var(--brand); }
+      .calc button:focus-visible { outline: 3px solid var(--ring); outline-offset: 2px; }
+      .calc .row.wide { grid-template-columns: repeat(2, 1fr); }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="container nav">
+        <a class="brand" href="../">
+          <div class="logo" aria-hidden="true"></div>
+          <span class="brand-name">Minseo Lee</span>
+        </a>
+        <nav class="nav-links" aria-label="Primary">
+          <a href="../">Home</a>
+          <a href="../about.html">About</a>
+          <a href="../contact.html">Contact</a>
+          <a href="../docs/">Docs</a>
+          <a class="active" href="./">Tech</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="container">
+      <article class="prose" aria-label="Calculator">
+        <h1>Calculator</h1>
+        <div class="calc" role="application" aria-label="계산기">
+          <div id="display" class="display" aria-live="polite">0</div>
+          <div class="row">
+            <button data-action="clear">AC</button>
+            <button data-action="sign">±</button>
+            <button data-action="percent">%</button>
+            <button data-op="/">÷</button>
+          </div>
+          <div class="row">
+            <button>7</button>
+            <button>8</button>
+            <button>9</button>
+            <button data-op="*">×</button>
+          </div>
+          <div class="row">
+            <button>4</button>
+            <button>5</button>
+            <button>6</button>
+            <button data-op="-">−</button>
+          </div>
+          <div class="row">
+            <button>1</button>
+            <button>2</button>
+            <button>3</button>
+            <button data-op="+">+</button>
+          </div>
+          <div class="row">
+            <button class="row-2" style="grid-column: span 2;">0</button>
+            <button>.</button>
+            <button class="primary" data-action="equals">=</button>
+          </div>
+        </div>
+      </article>
+    </main>
+
+    <footer>
+      <div class="container">© <span id="year"></span> Minseo Lee</div>
+    </footer>
+
+    <script>
+      (function(){
+        const display = document.getElementById('display');
+        let current = '0';
+        let stored = null;
+        let op = null;
+        const update = () => { display.textContent = current; };
+        const inputDigit = (d) => {
+          if (current === '0') current = d; else current += d;
+          update();
+        };
+        const inputDot = () => { if (!current.includes('.')) { current += '.'; update(); } };
+        const setOp = (nextOp) => {
+          if (op && stored !== null) equals();
+          stored = parseFloat(current);
+          current = '0';
+          op = nextOp;
+        };
+        const clearAll = () => { current = '0'; stored = null; op = null; update(); };
+        const toggleSign = () => { if (current !== '0') { current = String(-parseFloat(current)); update(); } };
+        const percent = () => { current = String(parseFloat(current) / 100); update(); };
+        const equals = () => {
+          if (op && stored !== null) {
+            const a = stored; const b = parseFloat(current);
+            let res = 0;
+            switch(op){ case '+': res = a + b; break; case '-': res = a - b; break; case '*': res = a * b; break; case '/': res = b === 0 ? NaN : a / b; break; }
+            current = Number.isFinite(res) ? String(res) : 'Error';
+            stored = null; op = null; update();
+          }
+        };
+        document.addEventListener('click', (e) => {
+          const t = e.target; if (!(t instanceof HTMLElement)) return;
+          if (t.matches('button')) {
+            const d = t.textContent?.trim();
+            if (t.dataset.action === 'clear') return clearAll();
+            if (t.dataset.action === 'sign') return toggleSign();
+            if (t.dataset.action === 'percent') return percent();
+            if (t.dataset.action === 'equals') return equals();
+            if (t.dataset.op) return setOp(t.dataset.op);
+            if (d === '.') return inputDot();
+            if (/^\d$/.test(d || '')) return inputDigit(d || '');
+          }
+        });
+        document.addEventListener('keydown', (e) => {
+          const k = e.key;
+          if (/^\d$/.test(k)) return inputDigit(k);
+          if (k === '.') return inputDot();
+          if (['+', '-', '*', '/'].includes(k)) return setOp(k);
+          if (k === 'Enter' || k === '=') return equals();
+          if (k === 'Escape') return clearAll();
+        });
+        update();
+      })();
+    </script>
+  </body>
+  </html>
