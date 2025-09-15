@@ -6,6 +6,34 @@
   const updated = document.getElementById('updated');
   if (updated) updated.textContent = new Date().toISOString().slice(0, 10);
 
+  // Theme toggle
+  const applyTheme = (theme) => {
+    document.documentElement.setAttribute('data-theme', theme);
+    try { localStorage.setItem('theme', theme); } catch {}
+  };
+  const storedTheme = (() => { try { return localStorage.getItem('theme'); } catch { return null; } })();
+  const initial = storedTheme || 'dark';
+  applyTheme(initial);
+
+  const header = document.querySelector('header .container');
+  if (header) {
+    const toggleWrap = document.createElement('div');
+    toggleWrap.className = 'theme-toggle';
+    const btn = document.createElement('button');
+    btn.type = 'button';
+    const setLabel = () => { btn.textContent = (document.documentElement.getAttribute('data-theme') === 'light') ? '다크' : '라이트'; };
+    setLabel();
+    btn.addEventListener('click', () => {
+      const current = document.documentElement.getAttribute('data-theme') || 'dark';
+      const next = current === 'light' ? 'dark' : 'light';
+      applyTheme(next);
+      setLabel();
+    });
+    toggleWrap.appendChild(btn);
+    // Insert before brand to place at left
+    header.insertBefore(toggleWrap, header.firstChild);
+  }
+
   const form = document.getElementById('contact-form');
   if (form) {
     form.addEventListener('submit', async (e) => {
