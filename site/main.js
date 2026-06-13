@@ -12,7 +12,7 @@
     try { localStorage.setItem('theme', theme); } catch {}
   };
   const storedTheme = (() => { try { return localStorage.getItem('theme'); } catch { return null; } })();
-  const initial = storedTheme || 'dark';
+  const initial = storedTheme || 'light';
   applyTheme(initial);
 
   const header = document.querySelector('header .container');

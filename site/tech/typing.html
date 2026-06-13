@@ -5,19 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Typing • Minseo Lee</title>
     <meta name="description" content="랜덤 구절로 타자 연습 (WPM/정확도/오타/타이머)." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;600&display=swap" />
     <link rel="stylesheet" href="../styles.css" />
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect rx='12' width='64' height='64' fill='%232563eb'/><text x='50%' y='54%' text-anchor='middle' font-family='Arial' font-weight='700' font-size='34' fill='white'>M</text></svg>">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' fill='%23161616'/><text x='50%' y='54%' text-anchor='middle' font-family='IBM Plex Sans, Arial' font-weight='600' font-size='34' fill='white'>M</text></svg>">
     <style>
-      .typing { max-width: 760px; margin: 36px auto; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); box-shadow: var(--shadow); padding: 24px; }
-      .stats { display: flex; gap: 16px; flex-wrap: wrap; color: var(--muted); font-size: 14px; margin-bottom: 12px; }
-      .text { font-size: 20px; line-height: 1.7; letter-spacing: 0.01em; }
+      .typing { max-width: 760px; margin: 64px auto; background: var(--canvas); border: 1px solid var(--hairline); border-radius: 0; padding: 48px; }
+      .typing h1 { font-size: 42px; font-weight: 300; line-height: 1.20; margin: 0 0 24px; color: var(--ink); }
+      .stats { display: flex; gap: 24px; flex-wrap: wrap; color: var(--ink-muted); font-size: 14px; letter-spacing: 0.16px; margin-bottom: 24px; padding-bottom: 16px; border-bottom: 1px solid var(--hairline); }
+      .stats span { color: var(--ink); font-weight: 600; }
+      .text { font-size: 20px; line-height: 1.7; letter-spacing: 0; color: var(--ink); font-weight: 300; }
       .text span { padding: 0 1px; }
-      .text .done { color: var(--muted); }
-      .text .current { background: var(--surface-alt); border-bottom: 2px solid var(--brand); }
-      .text .wrong { background: #7f1d1d; color: #fff; }
-      .controls { display: flex; gap: 10px; margin-top: 16px; }
-      .controls button { padding: 10px 14px; border-radius: 10px; border: 1px solid var(--border); background: #111315; color: var(--text); }
-      .source { color: var(--muted); font-size: 13px; margin-top: 10px; }
+      .text .done { color: var(--ink-subtle); }
+      .text .current { background: var(--surface-1); border-bottom: 2px solid var(--primary); }
+      .text .wrong { background: var(--error); color: var(--on-primary); }
+      .controls { display: flex; gap: 1px; margin-top: 32px; }
+      .controls .btn { min-width: 160px; }
+      .source { color: var(--ink-muted); font-size: 12px; letter-spacing: 0.32px; margin-top: 16px; }
     </style>
   </head>
   <body>
@@ -39,7 +44,7 @@
 
     <main class="container">
       <article class="typing" aria-label="Typing Practice">
-        <h1 style="margin-top:0">타자연습</h1>
+        <h1>타자연습</h1>
         <div class="stats">
           <div>시간: <span id="time">0</span>s</div>
           <div>WPM: <span id="wpm">0</span></div>
