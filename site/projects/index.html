@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Projects • Minseo Lee</title>
+    <meta name="description" content="이민서가 완성한 프로젝트 모음 — 웹, AI 에이전트, 강화학습 연구, 오디오 ML 등." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;600&display=swap" />
+    <link rel="stylesheet" href="../styles.css" />
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' fill='%23161616'/><text x='50%' y='54%' text-anchor='middle' font-family='IBM Plex Sans, Arial' font-weight='600' font-size='34' fill='white'>M</text></svg>">
+  </head>
+  <body>
+    <header>
+      <div class="container nav">
+        <a class="brand" href="../">
+          <div class="logo" aria-hidden="true"></div>
+          <span class="brand-name">Minseo Lee</span>
+        </a>
+        <nav class="nav-links" aria-label="Primary">
+          <a href="../">Home</a>
+          <a href="../about.html">About</a>
+          <a class="active" href="./">Projects</a>
+          <a href="../contact.html">Contact</a>
+          <a href="../docs/">Docs</a>
+          <a href="../tech/">Tech</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="container">
+      <section class="projects-intro">
+        <p class="eyebrow">Projects</p>
+        <h1 class="projects-heading">완성된 프로젝트</h1>
+        <p class="projects-lede">웹 제품, 강화학습 연구, AI 에이전트, 오디오 ML 등 직접 설계하고 배포한 결과물입니다.</p>
+      </section>
+
+      <section class="project-grid" aria-label="Completed projects">
+        <article class="project-card">
+          <p class="project-tag">웹 · AI</p>
+          <h2 class="project-title">타로 운세</h2>
+          <p class="project-body">자연어 질문을 LLM이 의도 분류하고, 22장 메이저 아르카나 중 3장을 선택하면 SSE 스트리밍으로 맞춤형 타로 리딩을 실시간 제공하는 웹앱.</p>
+          <ul class="project-stack">
+            <li>React 19</li><li>TypeScript</li><li>Vercel Serverless</li><li>OpenRouter</li>
+          </ul>
+          <a class="project-link" href="https://taro-ruby.vercel.app/" target="_blank" rel="noopener noreferrer">데모 열기 →</a>
+        </article>
+
+        <article class="project-card">
+          <p class="project-tag">3D · 인터랙티브</p>
+          <h2 class="project-title">Cat Sim</h2>
+          <p class="project-body">Three.js로 만든 캐주얼 시뮬레이션. 햄스터 오브젝트와 카메라 인터랙션, 씬 이펙트를 모듈 단위로 분리한 Vite 프로젝트.</p>
+          <ul class="project-stack">
+            <li>Three.js</li><li>TypeScript</li><li>Vite</li>
+          </ul>
+          <p class="project-link muted">로컬 빌드 / 비공개 데모</p>
+        </article>
+
+        <article class="project-card">
+          <p class="project-tag">AI 에이전트</p>
+          <h2 class="project-title">Discord Multi-Agent Bot</h2>
+          <p class="project-body">메시지 의도를 분석해 6개 에이전트(Chat · Coder · Search · Memory · Email · Paper)가 자동으로 응답하는 멀티 에이전트 봇.</p>
+          <ul class="project-stack">
+            <li>Python</li><li>discord.py</li><li>OpenRouter</li><li>Gmail API</li>
+          </ul>
+          <p class="project-link muted">셀프 호스트 / 운영 중</p>
+        </article>
+
+        <article class="project-card">
+          <p class="project-tag">강화학습 · 연구</p>
+          <h2 class="project-title">FCEV-RL · Hyundai Nexo</h2>
+          <p class="project-body">연료전지 차량의 파워 스플릿과 공기 공급(산소 과잉비 / 캐소드 압력)을 계층형 SAC로 공동 최적화. 출판 측정치 ±5% 이내 검증된 시뮬레이터.</p>
+          <ul class="project-stack">
+            <li>Python</li><li>PyTorch</li><li>H-SAC</li><li>SCI 논문 준비</li>
+          </ul>
+          <p class="project-link muted">연구 코드 · 비공개</p>
+        </article>
+
+        <article class="project-card">
+          <p class="project-tag">강화학습 · 연구</p>
+          <h2 class="project-title">FCHEV Multi-Algorithm RL</h2>
+          <p class="project-body">연료전지-배터리 하이브리드 차량의 에너지 관리 전략을 여러 RL 알고리즘으로 토너먼트 학습하고, 커리큘럼/보상 함수를 비교 분석.</p>
+          <ul class="project-stack">
+            <li>Python</li><li>PyTorch</li><li>TD3</li><li>SAC</li>
+          </ul>
+          <p class="project-link muted">연구 코드 · 비공개</p>
+        </article>
+
+        <article class="project-card">
+          <p class="project-tag">엔터프라이즈 플랫폼</p>
+          <h2 class="project-title">AXEworks Foundation Engine</h2>
+          <p class="project-body">기존 시스템 위에 비파괴적 AI 실행 레이어를 얹는 이원화 엔진. AXEngine(내부 업무 오케스트레이션) + AXE_POE(외부 운영 루프) 구성.</p>
+          <ul class="project-stack">
+            <li>TypeScript</li><li>Node</li><li>Vite</li><li>Express</li>
+          </ul>
+          <p class="project-link muted">내부 운영 · 비공개</p>
+        </article>
+
+        <article class="project-card">
+          <p class="project-tag">오디오 ML</p>
+          <h2 class="project-title">LV NEXUS Vocal Engine</h2>
+          <p class="project-body">피치 · 포먼트 · MFCC · 박자 정합도까지 다차원 보컬 분석을 수행하는 트레이닝 엔진. numpy fallback으로 최소 의존성 모드까지 지원.</p>
+          <ul class="project-stack">
+            <li>Python</li><li>librosa</li><li>FastAPI</li><li>torchcrepe</li>
+          </ul>
+          <p class="project-link muted">패키지 / 비공개 API</p>
+        </article>
+
+        <article class="project-card">
+          <p class="project-tag">문서 처리</p>
+          <h2 class="project-title">Korean PDF OCR</h2>
+          <p class="project-body">한국어 PDF를 PaddleOCR로 텍스트화해 원본 레이아웃 위에 오버레이하는 정밀 인식 파이프라인. 각도 보정 및 정렬 후 PDF 재합성.</p>
+          <ul class="project-stack">
+            <li>PaddleOCR</li><li>PyMuPDF</li><li>Python</li>
+          </ul>
+          <p class="project-link muted">스크립트 · 사내 사용</p>
+        </article>
+      </section>
+    </main>
+
+    <footer>
+      <div class="container">© <span id="year"></span> Minseo Lee</div>
+    </footer>
+
+    <script src="../main.js" defer></script>
+  </body>
+</html>

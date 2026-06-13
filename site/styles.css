@@ -275,9 +275,12 @@ header {
   border-radius: 0;
   padding: 24px;
   color: var(--ink);
+  text-decoration: none;
+  display: block;
   transition: background-color .15s ease;
 }
 .card:hover { background: var(--surface-1); }
+.card:focus-visible { outline: 2px solid var(--primary); outline-offset: -4px; }
 .card h3 {
   /* {typography.card-title} */
   margin: 0 0 12px;
@@ -394,6 +397,113 @@ form.contact h1 {
   padding-bottom: 10px;
 }
 
+/* Projects page — Carbon feature-card grid */
+.projects-intro {
+  padding: 64px 0 32px;
+  border-bottom: 1px solid var(--hairline);
+}
+.eyebrow {
+  /* {typography.eyebrow} — sentence case, 14px */
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: 0.16px;
+  color: var(--ink-muted);
+  margin: 0 0 16px;
+}
+.projects-heading {
+  /* {typography.display-lg} — light-weight display */
+  font-size: 60px;
+  font-weight: 300;
+  line-height: 1.17;
+  letter-spacing: -0.4px;
+  color: var(--ink);
+  margin: 0 0 24px;
+  max-width: 18ch;
+}
+.projects-lede {
+  /* {typography.body-lg} */
+  font-size: 18px;
+  line-height: 1.5;
+  color: var(--ink-muted);
+  margin: 0 0 32px;
+  max-width: 56ch;
+}
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--hairline);
+  border: 1px solid var(--hairline);
+  margin-bottom: 96px;
+}
+.project-card {
+  /* {feature-card} — canvas + 1px hairline frame, 24px padding */
+  background: var(--canvas);
+  padding: 32px;
+  color: var(--ink);
+  display: flex;
+  flex-direction: column;
+  transition: background-color .15s ease;
+}
+.project-card:hover { background: var(--surface-1); }
+.project-tag {
+  /* {typography.caption} */
+  font-size: 12px;
+  letter-spacing: 0.32px;
+  color: var(--ink-muted);
+  text-transform: none;
+  margin: 0 0 24px;
+}
+.project-title {
+  /* {typography.card-title} */
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 1.33;
+  color: var(--ink);
+  margin: 0 0 16px;
+  letter-spacing: 0;
+}
+.project-body {
+  /* {typography.body-sm} */
+  font-size: 14px;
+  line-height: 1.5;
+  letter-spacing: 0.16px;
+  color: var(--ink-muted);
+  margin: 0 0 24px;
+  flex: 1;
+}
+.project-stack {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 24px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+.project-stack li {
+  font-size: 12px;
+  letter-spacing: 0.32px;
+  color: var(--ink);
+  background: var(--surface-1);
+  padding: 4px 8px;
+  border-radius: 0;
+}
+.project-card:hover .project-stack li { background: var(--canvas); }
+.project-link {
+  font-size: 14px;
+  letter-spacing: 0.16px;
+  color: var(--primary);
+  text-decoration: none;
+  margin: 0;
+  padding-top: 16px;
+  border-top: 1px solid var(--hairline);
+}
+.project-link:hover { color: var(--blue-60); }
+.project-link.muted {
+  color: var(--ink-subtle);
+  cursor: default;
+}
+
 /* Motion & Accessibility */
 @media (prefers-reduced-motion: reduce) {
   * { transition: none !important; animation: none !important; }
@@ -403,6 +513,8 @@ form.contact h1 {
 @media (max-width: 1056px) {
   .headline { font-size: 48px; letter-spacing: -0.32px; }
   .cards { grid-template-columns: repeat(2, 1fr); }
+  .project-grid { grid-template-columns: repeat(2, 1fr); }
+  .projects-heading { font-size: 48px; letter-spacing: -0.32px; }
 }
 @media (max-width: 672px) {
   .hero { padding: 48px 0 24px; }
@@ -410,6 +522,9 @@ form.contact h1 {
   .hero-card { padding: 32px 24px; border-right: none; }
   .headline { font-size: 32px; letter-spacing: 0; }
   .cards { grid-template-columns: 1fr; }
+  .project-grid { grid-template-columns: 1fr; }
+  .projects-heading { font-size: 32px; letter-spacing: 0; }
+  .projects-intro { padding: 32px 0 24px; }
   .nav-links a { padding: 0 12px; }
   .prose, form.contact { padding: 32px 24px; margin: 32px 16px; }
   .prose h1, form.contact h1 { font-size: 32px; }
