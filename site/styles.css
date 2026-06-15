@@ -540,12 +540,27 @@ form.contact h1 {
   margin: 0;
   padding-top: 16px;
   border-top: 1px solid var(--hairline);
+  display: block;
 }
 .project-link:hover { color: var(--blue-60); }
 .project-link.muted {
   color: var(--ink-subtle);
   cursor: default;
 }
+.project-links {
+  padding-top: 16px;
+  border-top: 1px solid var(--hairline);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+.project-links .project-link {
+  padding-top: 0;
+  border-top: none;
+  display: inline;
+}
+.project-links .project-link.secondary { color: var(--ink-muted); }
+.project-links .project-link.secondary:hover { color: var(--ink); }
 
 /* Motion & Accessibility */
 @media (prefers-reduced-motion: reduce) {
