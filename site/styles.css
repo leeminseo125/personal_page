@@ -428,13 +428,54 @@ form.contact h1 {
   margin: 0 0 32px;
   max-width: 56ch;
 }
+/* Project group — separates Main vs Sub */
+.project-group { margin: 48px 0 96px; }
+.project-group-header {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  padding-bottom: 24px;
+  margin-bottom: 24px;
+  border-bottom: 1px solid var(--hairline);
+}
+.project-group-header .eyebrow { margin: 0; }
+.project-group-heading {
+  /* {typography.headline} — 32px weight 400 */
+  font-size: 32px;
+  font-weight: 400;
+  line-height: 1.25;
+  letter-spacing: 0;
+  color: var(--ink);
+  margin: 0;
+}
+
 .project-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 1px;
   background: var(--hairline);
   border: 1px solid var(--hairline);
-  margin-bottom: 96px;
+  margin-bottom: 0;
+}
+
+/* Main grid — larger cards with IBM Blue accent at the top */
+.project-grid--main { /* same 3-up grid; emphasis on the cards */ }
+.project-card--main {
+  padding: 48px;
+  border-top: 4px solid var(--primary);
+}
+.project-card--main .project-body {
+  /* {typography.body} 16px instead of body-sm */
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--ink);
+}
+.project-title--lg {
+  /* {typography.headline} — main cards get the 32px treatment */
+  font-size: 32px;
+  font-weight: 400;
+  line-height: 1.25;
+  letter-spacing: 0;
 }
 .project-card {
   /* {feature-card} — canvas + 1px hairline frame, 24px padding */
@@ -523,6 +564,11 @@ form.contact h1 {
   .headline { font-size: 32px; letter-spacing: 0; }
   .cards { grid-template-columns: 1fr; }
   .project-grid { grid-template-columns: 1fr; }
+  .project-card--main { padding: 32px 24px; }
+  .project-title--lg { font-size: 24px; }
+  .project-group { margin: 32px 0 64px; }
+  .project-group-header { flex-direction: column; gap: 4px; align-items: flex-start; }
+  .project-group-heading { font-size: 24px; }
   .projects-heading { font-size: 32px; letter-spacing: 0; }
   .projects-intro { padding: 32px 0 24px; }
   .nav-links a { padding: 0 12px; }

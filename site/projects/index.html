@@ -33,69 +33,85 @@
       <section class="projects-intro">
         <p class="eyebrow">Projects</p>
         <h1 class="projects-heading">완성된 프로젝트</h1>
-        <p class="projects-lede">웹 제품, 강화학습 연구, AI 에이전트, 오디오 ML 등 직접 설계하고 배포한 결과물입니다.</p>
+        <p class="projects-lede">메인 프로젝트는 깊게 다룬 핵심 작업, 서브 프로젝트는 도구·실험 단위의 결과물입니다.</p>
       </section>
 
-      <section class="project-grid" aria-label="Completed projects">
-        <article class="project-card">
-          <p class="project-tag">웹 · AI</p>
-          <h2 class="project-title">타로 운세</h2>
-          <p class="project-body">자연어 질문을 LLM이 의도 분류하고, 22장 메이저 아르카나 중 3장을 선택하면 SSE 스트리밍으로 맞춤형 타로 리딩을 실시간 제공하는 웹앱.</p>
-          <ul class="project-stack">
-            <li>React 19</li><li>TypeScript</li><li>Vercel Serverless</li><li>OpenRouter</li>
-          </ul>
-          <a class="project-link" href="https://taro-ruby.vercel.app/" target="_blank" rel="noopener noreferrer">데모 열기 →</a>
-        </article>
+      <section class="project-group" aria-labelledby="main-projects-heading">
+        <header class="project-group-header">
+          <p class="eyebrow">Main projects</p>
+          <h2 id="main-projects-heading" class="project-group-heading">메인 프로젝트</h2>
+        </header>
 
-        <article class="project-card">
-          <p class="project-tag">3D · 인터랙티브</p>
-          <h2 class="project-title">Cat Sim</h2>
-          <p class="project-body">Three.js로 만든 캐주얼 시뮬레이션. 햄스터 오브젝트와 카메라 인터랙션, 씬 이펙트를 모듈 단위로 분리한 Vite 프로젝트.</p>
-          <ul class="project-stack">
-            <li>Three.js</li><li>TypeScript</li><li>Vite</li>
-          </ul>
-          <p class="project-link muted">로컬 빌드 / 비공개 데모</p>
-        </article>
+        <div class="project-grid project-grid--main">
+          <article class="project-card project-card--main">
+            <p class="project-tag">컴퓨터 비전 · 연구 (KCI 등재)</p>
+            <h3 class="project-title project-title--lg">드론 영상 기반 수계 위험 판단 파이프라인</h3>
+            <p class="project-body">SegFormer 기반 수계 분할과 YOLO11 기반 인명 탐지를 결합해 수변 인명 위험 상황을 자동 판단. 모델 규모별 정확도·추론 속도를 비교하여 SegFormer B3 + YOLO11m을 최적 조합으로 도출. (공동 2저자, 삼육대 AI융합학부)</p>
+            <ul class="project-stack">
+              <li>SegFormer</li><li>YOLO11</li><li>PyTorch</li><li>Semantic Segmentation</li><li>Object Detection</li>
+            </ul>
+            <p class="project-link muted">KCI 논문 · 2026</p>
+          </article>
 
-        <article class="project-card">
-          <p class="project-tag">AI 에이전트</p>
-          <h2 class="project-title">Discord Multi-Agent Bot</h2>
-          <p class="project-body">메시지 의도를 분석해 6개 에이전트(Chat · Coder · Search · Memory · Email · Paper)가 자동으로 응답하는 멀티 에이전트 봇.</p>
-          <ul class="project-stack">
-            <li>Python</li><li>discord.py</li><li>OpenRouter</li><li>Gmail API</li>
-          </ul>
-          <p class="project-link muted">셀프 호스트 / 운영 중</p>
-        </article>
+          <article class="project-card project-card--main">
+            <p class="project-tag">AI 에이전트</p>
+            <h3 class="project-title project-title--lg">Discord Multi-Agent Bot</h3>
+            <p class="project-body">메시지 의도를 분석해 6개 에이전트(Chat · Coder · Search · Memory · Email · Paper)가 자동으로 응답하는 멀티 에이전트 봇. 의도 분류 → 라우팅 → 응답을 한 흐름으로 묶었습니다.</p>
+            <ul class="project-stack">
+              <li>Python</li><li>discord.py</li><li>OpenRouter</li><li>Gmail API</li>
+            </ul>
+            <p class="project-link muted">셀프 호스트 · 운영 중</p>
+          </article>
 
-        <article class="project-card">
-          <p class="project-tag">컴퓨터 비전 · 연구 (KCI 등재)</p>
-          <h2 class="project-title">드론 영상 기반 수계 위험 판단 파이프라인</h2>
-          <p class="project-body">SegFormer 기반 수계 분할과 YOLO11 기반 인명 탐지를 결합해 수변 인명 위험 상황을 자동 판단. 모델 규모별 정확도·추론 속도를 비교하여 SegFormer B3 + YOLO11m을 최적 조합으로 도출. (공동 2저자, 삼육대 AI융합학부)</p>
-          <ul class="project-stack">
-            <li>SegFormer</li><li>YOLO11</li><li>PyTorch</li><li>Semantic Segmentation</li><li>Object Detection</li>
-          </ul>
-          <p class="project-link muted">KCI 논문 · 2026</p>
-        </article>
+          <article class="project-card project-card--main">
+            <p class="project-tag">강화학습 · 연구</p>
+            <h3 class="project-title project-title--lg">FCHEV Multi-Algorithm RL</h3>
+            <p class="project-body">연료전지-배터리 하이브리드 차량(FCHEV)의 에너지 관리 전략을 TD3·SAC 등 여러 알고리즘으로 토너먼트 학습하고, 커리큘럼·보상 함수·시나리오를 체계적으로 비교 분석한 연구 파이프라인.</p>
+            <ul class="project-stack">
+              <li>Python</li><li>PyTorch</li><li>TD3</li><li>SAC</li><li>Curriculum RL</li>
+            </ul>
+            <p class="project-link muted">연구 코드 · 비공개</p>
+          </article>
+        </div>
+      </section>
 
-        <article class="project-card">
-          <p class="project-tag">강화학습 · 연구</p>
-          <h2 class="project-title">FCHEV Multi-Algorithm RL</h2>
-          <p class="project-body">연료전지-배터리 하이브리드 차량의 에너지 관리 전략을 여러 RL 알고리즘으로 토너먼트 학습하고, 커리큘럼/보상 함수를 비교 분석.</p>
-          <ul class="project-stack">
-            <li>Python</li><li>PyTorch</li><li>TD3</li><li>SAC</li>
-          </ul>
-          <p class="project-link muted">연구 코드 · 비공개</p>
-        </article>
+      <section class="project-group" aria-labelledby="sub-projects-heading">
+        <header class="project-group-header">
+          <p class="eyebrow">Sub projects</p>
+          <h2 id="sub-projects-heading" class="project-group-heading">서브 프로젝트</h2>
+        </header>
 
-        <article class="project-card">
-          <p class="project-tag">문서 처리</p>
-          <h2 class="project-title">Korean PDF OCR</h2>
-          <p class="project-body">한국어 PDF를 PaddleOCR로 텍스트화해 원본 레이아웃 위에 오버레이하는 정밀 인식 파이프라인. 각도 보정 및 정렬 후 PDF 재합성.</p>
-          <ul class="project-stack">
-            <li>PaddleOCR</li><li>PyMuPDF</li><li>Python</li>
-          </ul>
-          <p class="project-link muted">스크립트 · 사내 사용</p>
-        </article>
+        <div class="project-grid">
+          <article class="project-card">
+            <p class="project-tag">웹 · AI</p>
+            <h3 class="project-title">타로 운세</h3>
+            <p class="project-body">자연어 질문을 LLM이 의도 분류하고, 22장 메이저 아르카나 중 3장을 선택하면 SSE 스트리밍으로 맞춤형 타로 리딩을 실시간 제공하는 웹앱.</p>
+            <ul class="project-stack">
+              <li>React 19</li><li>TypeScript</li><li>Vercel Serverless</li><li>OpenRouter</li>
+            </ul>
+            <a class="project-link" href="https://taro-ruby.vercel.app/" target="_blank" rel="noopener noreferrer">데모 열기 →</a>
+          </article>
+
+          <article class="project-card">
+            <p class="project-tag">3D · 인터랙티브</p>
+            <h3 class="project-title">Cat Sim</h3>
+            <p class="project-body">Three.js로 만든 캐주얼 시뮬레이션. 햄스터 오브젝트와 카메라 인터랙션, 씬 이펙트를 모듈 단위로 분리한 Vite 프로젝트.</p>
+            <ul class="project-stack">
+              <li>Three.js</li><li>TypeScript</li><li>Vite</li>
+            </ul>
+            <p class="project-link muted">로컬 빌드 · 비공개 데모</p>
+          </article>
+
+          <article class="project-card">
+            <p class="project-tag">문서 처리</p>
+            <h3 class="project-title">Korean PDF OCR</h3>
+            <p class="project-body">한국어 PDF를 PaddleOCR로 텍스트화해 원본 레이아웃 위에 오버레이하는 정밀 인식 파이프라인. 각도 보정 및 정렬 후 PDF 재합성.</p>
+            <ul class="project-stack">
+              <li>PaddleOCR</li><li>PyMuPDF</li><li>Python</li>
+            </ul>
+            <p class="project-link muted">스크립트 · 사내 사용</p>
+          </article>
+        </div>
       </section>
     </main>
 
