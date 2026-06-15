@@ -44,6 +44,16 @@
 
         <div class="project-grid project-grid--main">
           <article class="project-card project-card--main">
+            <p class="project-tag">컴퓨터 비전 · 졸업 작품</p>
+            <h3 class="project-title project-title--lg">캡스톤 · YOLO 영역 모니터링 시스템</h3>
+            <p class="project-body">사용자가 OpenCV로 영상에 다각형 영역을 직접 그리면, YOLO 추론 서버가 영역에 진입한 객체를 감지하고 Streamlit 대시보드가 원본·추론 스트림을 나란히 보여줍니다. 스트리밍 · 추론 · UI를 세 개의 FastAPI/Uvicorn 프로세스로 분리한 마이크로서비스 구조이며, watchdog으로 영역 정의 파일을 실시간 갱신합니다. (공저 · 우용석)</p>
+            <ul class="project-stack">
+              <li>Python</li><li>YOLO (Ultralytics)</li><li>FastAPI</li><li>Streamlit</li><li>OpenCV</li><li>Shapely</li>
+            </ul>
+            <a class="project-link" href="https://github.com/leeminseo125/Capstone" target="_blank" rel="noopener noreferrer">GitHub 보기 →</a>
+          </article>
+
+          <article class="project-card project-card--main">
             <p class="project-tag">컴퓨터 비전 · 연구</p>
             <h3 class="project-title project-title--lg">드론 영상 기반 수계 위험 판단 파이프라인</h3>
             <p class="project-body">SegFormer 기반 수계 분할과 YOLO11 기반 인명 탐지를 결합해 수변 인명 위험 상황을 자동 판단. 모델 규모별 정확도·추론 속도를 비교하여 SegFormer B3 + YOLO11m을 최적 조합으로 도출. (공동 2저자, 삼육대 AI융합학부)</p>
